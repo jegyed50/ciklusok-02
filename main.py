@@ -1,89 +1,80 @@
-let counter = 0
-function Villogtat (hányszor: number) {
-    for (let index = 0; index < hányszor; index++) {
-        led.setBrightness(255)
+counter = 0
+def Villogtat():
+    for index in range(3):
+        led.set_brightness(255)
         basic.pause(500)
-        led.setBrightness(30)
+        led.set_brightness(30)
         basic.pause(500)
-        led.setBrightness(255)
+        led.set_brightness(255)
         basic.pause(500)
-    }
-}
-input.onButtonPressed(Button.A, function () {
+
+def on_button_pressed_a():
     Visszaszámlálás()
     KülsőKör()
-    Villogtat(1)
+    Villogtat()
     BelsőKör()
-    Villogtat(2)
+    Villogtat()
     Közepe()
-    Villogtat(3)
-})
-function KülsőKör () {
+    Villogtat()
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def KülsőKör():
+    global counter
     counter = 0
-    while (counter <= 4) {
+    while counter <= 4:
         led.plot(counter, 0)
         counter += 1
         basic.pause(200)
-    }
     counter = 0
-    while (counter <= 4) {
+    while counter <= 4:
         led.plot(4, counter)
         counter += 1
         basic.pause(200)
-    }
     counter = 0
-    while (counter <= 4) {
+    while counter <= 4:
         led.plot(4 - counter, 4)
         counter += 1
         basic.pause(200)
-    }
     counter = 0
-    while (counter <= 4) {
+    while counter <= 4:
         led.plot(0, 4 - counter)
         counter += 1
         basic.pause(200)
-    }
-}
-function BelsőKör () {
+def BelsőKör():
+    global counter
     counter = 1
-    while (counter <= 3) {
+    while counter <= 3:
         led.plot(counter, 1)
         counter += 1
         basic.pause(200)
-    }
     counter = 1
-    while (counter <= 3) {
+    while counter <= 3:
         led.plot(3, counter)
         counter += 1
         basic.pause(200)
-    }
     counter = 1
-    while (counter <= 3) {
+    while counter <= 3:
         led.plot(4 - counter, 3)
         counter += 1
         basic.pause(200)
-    }
     counter = 1
-    while (counter <= 3) {
+    while counter <= 3:
         led.plot(1, 4 - counter)
         counter += 1
         basic.pause(200)
-    }
-}
-function Visszaszámlálás () {
-    basic.clearScreen()
+def Visszaszámlálás():
+    global counter
+    basic.clear_screen()
     counter = 3
-    while (counter >= 1) {
-        basic.showNumber(counter)
+    while counter >= 1:
+        basic.show_number(counter)
         basic.pause(500)
         counter = counter - 1
-    }
     basic.pause(500)
-    basic.clearScreen()
-}
-function Közepe () {
+    basic.clear_screen()
+def Közepe():
     led.plot(2, 2)
-}
-basic.forever(function () {
-	
-})
+
+def on_forever():
+    pass
+basic.forever(on_forever)
