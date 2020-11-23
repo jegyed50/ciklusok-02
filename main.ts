@@ -1,16 +1,22 @@
 let counter = 0
-input.onButtonPressed(Button.A, function () {
-    counter = 1
-    while (counter <= 3) {
-        basic.showNumber(counter)
+function Villogtat () {
+    for (let index = 0; index < 3; index++) {
+        led.setBrightness(255)
         basic.pause(500)
-        counter += 1
+        led.setBrightness(30)
+        basic.pause(500)
+        led.setBrightness(255)
+        basic.pause(500)
     }
-    basic.pause(500)
-    basic.clearScreen()
+}
+input.onButtonPressed(Button.A, function () {
+    Visszaszámlálás()
     KülsőKör()
+    Villogtat()
     BelsőKör()
+    Villogtat()
     Közepe()
+    Villogtat()
 })
 function KülsőKör () {
     counter = 0
@@ -63,6 +69,17 @@ function BelsőKör () {
         counter += 1
         basic.pause(200)
     }
+}
+function Visszaszámlálás () {
+    basic.clearScreen()
+    counter = 3
+    while (counter >= 1) {
+        basic.showNumber(counter)
+        basic.pause(500)
+        counter = counter - 1
+    }
+    basic.pause(500)
+    basic.clearScreen()
 }
 function Közepe () {
     led.plot(2, 2)
