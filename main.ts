@@ -10,7 +10,7 @@ function Villogtat (hányszor: number) {
     }
 }
 input.onButtonPressed(Button.A, function () {
-    Visszaszámlálás()
+    Visszaszámlálás(3)
     KülsőKör()
     Villogtat(1)
     BelsőKör()
@@ -44,6 +44,14 @@ function KülsőKör () {
         basic.pause(200)
     }
 }
+input.onButtonPressed(Button.B, function () {
+    counter = 0
+    while (counter <= 4) {
+        led.plot(0, 4 - counter)
+        counter += 1
+        basic.pause(200)
+    }
+})
 function BelsőKör () {
     counter = 1
     while (counter <= 3) {
@@ -70,9 +78,9 @@ function BelsőKör () {
         basic.pause(200)
     }
 }
-function Visszaszámlálás () {
+function Visszaszámlálás (mettől: number) {
     basic.clearScreen()
-    counter = 3
+    counter = mettől
     while (counter >= 1) {
         basic.showNumber(counter)
         basic.pause(500)
